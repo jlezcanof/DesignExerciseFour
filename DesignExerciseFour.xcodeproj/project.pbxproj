@@ -6,17 +6,24 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		9ECA32302D9024E5005F6F8E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ECA322A2D9024E5005F6F8E /* Preview Assets.xcassets */; };
+		9ECA32312D9024E5005F6F8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ECA322C2D9024E5005F6F8E /* Assets.xcassets */; };
+		9ECA32322D9024E5005F6F8E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECA322D2D9024E5005F6F8E /* ContentView.swift */; };
+		9ECA32332D9024E5005F6F8E /* DesignExerciseFourApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECA322E2D9024E5005F6F8E /* DesignExerciseFourApp.swift */; };
+		9ECA32362D90251E005F6F8E /* SuperHeroes.json in Resources */ = {isa = PBXBuildFile; fileRef = 9ECA32352D90251E005F6F8E /* SuperHeroes.json */; };
+		9ECA323B2D902D9A005F6F8E /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECA323A2D902D94005F6F8E /* Hero.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		9ECA32192D901C83005F6F8E /* DesignExerciseFour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesignExerciseFour.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9ECA322A2D9024E5005F6F8E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9ECA322C2D9024E5005F6F8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9ECA322D2D9024E5005F6F8E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9ECA322E2D9024E5005F6F8E /* DesignExerciseFourApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignExerciseFourApp.swift; sourceTree = "<group>"; };
+		9ECA32352D90251E005F6F8E /* SuperHeroes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SuperHeroes.json; sourceTree = "<group>"; };
+		9ECA323A2D902D94005F6F8E /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		9ECA321B2D901C83005F6F8E /* DesignExerciseFour */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = DesignExerciseFour;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		9ECA32162D901C83005F6F8E /* Frameworks */ = {
@@ -32,7 +39,7 @@
 		9ECA32102D901C83005F6F8E = {
 			isa = PBXGroup;
 			children = (
-				9ECA321B2D901C83005F6F8E /* DesignExerciseFour */,
+				9ECA322F2D9024E5005F6F8E /* DesignExerciseFour */,
 				9ECA321A2D901C83005F6F8E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +50,43 @@
 				9ECA32192D901C83005F6F8E /* DesignExerciseFour.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		9ECA322B2D9024E5005F6F8E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				9ECA322A2D9024E5005F6F8E /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9ECA322F2D9024E5005F6F8E /* DesignExerciseFour */ = {
+			isa = PBXGroup;
+			children = (
+				9ECA32372D902547005F6F8E /* Model */,
+				9ECA32342D9024F1005F6F8E /* Resources */,
+				9ECA322B2D9024E5005F6F8E /* Preview Content */,
+				9ECA322C2D9024E5005F6F8E /* Assets.xcassets */,
+				9ECA322D2D9024E5005F6F8E /* ContentView.swift */,
+				9ECA322E2D9024E5005F6F8E /* DesignExerciseFourApp.swift */,
+			);
+			path = DesignExerciseFour;
+			sourceTree = "<group>";
+		};
+		9ECA32342D9024F1005F6F8E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9ECA32352D90251E005F6F8E /* SuperHeroes.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9ECA32372D902547005F6F8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9ECA323A2D902D94005F6F8E /* Hero.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,9 +103,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				9ECA321B2D901C83005F6F8E /* DesignExerciseFour */,
 			);
 			name = DesignExerciseFour;
 			packageProductDependencies = (
@@ -109,6 +150,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9ECA32362D90251E005F6F8E /* SuperHeroes.json in Resources */,
+				9ECA32302D9024E5005F6F8E /* Preview Assets.xcassets in Resources */,
+				9ECA32312D9024E5005F6F8E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +163,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9ECA32322D9024E5005F6F8E /* ContentView.swift in Sources */,
+				9ECA32332D9024E5005F6F8E /* DesignExerciseFourApp.swift in Sources */,
+				9ECA323B2D902D9A005F6F8E /* Hero.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
