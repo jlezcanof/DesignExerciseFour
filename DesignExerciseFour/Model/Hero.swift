@@ -7,45 +7,7 @@
 
 import Foundation
 
-
-
-//, Identifiable
-//, Hashable, Equatable
-struct Hero: Codable, Identifiable {
-    let id = UUID()
-    let nombreReal: String
-    let apodo: String
-    let description: String
-    let edad: Int
-    let poderes: [String]// StringPoderesSuperHeroes
-    let imagen: String
-    
-    enum CodingKeys: String, CodingKey {
-        case nombreReal, apodo, description, edad, poderes, imagen
-    }
-    
-    init(from decoder: any Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        self.nombreReal = try container.decode(String.self, forKey: .nombreReal)
-        self.apodo = try container.decode(String.self, forKey: .apodo)
-        self.description = try container.decode(String.self, forKey: .description)
-        self.edad = try container.decode(Int.self, forKey: .edad)
-        
-        //let poderes = try container.decode([String].self, forKey: .poderes)
-        //self.poderes = .init(rawValue: poderes)
-        self.poderes = try container.decode([String].self, forKey: .poderes)
-        self.imagen = try container.decode(String.self, forKey: .imagen)
-    }
-}
-//
-//extension Hero: Hashable, Equatable {
-//    public func hash(into hasher: inout Hasher) {
-//        hasher.combine(id)
-//    }
-//}
-
-enum PoderesSuperheroes: String, Codable {
+enum PoderesSuperheroes: String, Codable, CaseIterable {
     case telepatia = "Telepatía"
     case vuelo = "Vuelo"
     case superFuerza = "Super Fuerza"
@@ -76,3 +38,75 @@ enum PoderesSuperheroes: String, Codable {
     case regeneracion = "Regeneración"
     case manipulacionDelFuego = "Manipulación del fuego"
 }
+
+
+// Hashable, Equatable
+struct Hero: Codable, Identifiable {
+    let id = UUID()
+    let nombreReal: String
+    let apodo: String
+    let descripcion: String
+    let edad: Int
+    let poderes: [PoderesSuperheroes]
+    let imagen: String
+    private let historia: String
+    
+    enum CodingKeys: String, CodingKey {
+        case nombreReal, apodo, descripcion, edad, poderes, imagen, historia
+    }
+    
+    init(nombreReal: String, apodo: String, descripcion: String, edad: Int, poderes: [PoderesSuperheroes], imagen: String) {
+        self.nombreReal = nombreReal
+        self.apodo = apodo
+        self.descripcion = descripcion
+        self.edad = edad
+        self.poderes = poderes
+        self.imagen = imagen
+        self.historia = ""
+    }
+    
+    init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        self.nombreReal = try container.decode(String.self, forKey: .nombreReal)
+        self.apodo = try container.decode(String.self, forKey: .apodo)
+        
+        let historia = try container.decodeIfPresent(String.self, forKey: .historia)
+        self.historia = historia == nil ? "" : historia!
+        
+        let descripcion = try container.decodeIfPresent(String.self, forKey: .descripcion)
+        
+        if let descripcion = descripcion {
+            self.descripcion = descripcion
+        } else if let historia = historia {
+            self.descripcion = historia
+        } else {
+            self.descripcion = ""
+        }
+        
+        self.edad = try container.decode(Int.self, forKey: .edad)
+        let poderes = try container.decode([String].self, forKey: .poderes)
+        self.poderes = try poderes.map {
+            guard let poder = PoderesSuperheroes(rawValue: $0) else {
+                throw DecodingError.dataCorruptedError(forKey: .poderes, in: container, debugDescription: "Poder inválido: \($0)")
+            }
+            return poder
+        }
+        self.imagen = try container.decode(String.self, forKey: .imagen)
+    }
+
+}
+
+
+
+extension Hero: Hashable{//, Equatable
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}
+
+extension Hero {
+    static let test = Hero(nombreReal: "Juan teclado", apodo: "Anacleto", descripcion: "Después de un accidente en un laboratorio de neurociencia, Juan adquirió la capacidad de leer y manipular pensamientos.", edad: 40, poderes: [.telepatia], imagen: "telemente")
+}
+
+//

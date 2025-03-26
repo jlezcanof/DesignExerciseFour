@@ -121,7 +121,7 @@
         "descripcion": "Pedro tiene la habilidad de girar sobre sí mismo a velocidades increíbles, creando tornados o simplemente moviéndose rápidamente de un lugar a otro. A menudo se le ve como un torbellino en movimiento cuando usa su poder al máximo.",
         "edad": 31,
         "poderes": [
-            "Giro Rápido"
+            "Giro Rápido",
             "Creación de Tornados"
         ],
         "imagen": "giro"
